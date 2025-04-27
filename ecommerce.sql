@@ -48,3 +48,26 @@ TABLE size_option (
     size_label VARCHAR(50),
     FOREIGN KEY (size_category_id) REFERENCES size_category(size_category_id)
 );
+TABLE product_variation (
+    variation_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    color_id INT,
+    size_option_id INT,
+    FOREIGN KEY (product_id) REFERENCES product(product_id),
+    FOREIGN KEY (color_id) REFERENCES color(color_id),
+    FOREIGN KEY (size_option_id) REFERENCES size_option(size_option_id)
+);
+TABLE product_item (
+    product_item_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    variation_id INT,
+    sku VARCHAR(100) UNIQUE NOT NULL,
+    stock_quantity INT DEFAULT 0,
+    price_override DECIMAL(10,2),
+    FOREIGN KEY (product_id) REFERENCES product(product_id),
+    FOREIGN KEY (variation_id) REFERENCES product_variation(variation_id)
+);
+CREATE TABLE attribute_category (
+    attribute_category_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL
+);
