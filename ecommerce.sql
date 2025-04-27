@@ -5,17 +5,17 @@
 
 -- CATEGORY TABLES
 
-CREATE TABLE product_category (
+TABLE product_category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE brand (
+TABLE brand (
     brand_id INT PRIMARY KEY AUTO_INCREMENT,
     brand_name VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE product (
+TABLE product (
     product_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     brand_id INT,
@@ -24,15 +24,27 @@ CREATE TABLE product (
     FOREIGN KEY (brand_id) REFERENCES brand(brand_id),
     FOREIGN KEY (category_id) REFERENCES product_category(category_id)
 
-CREATE TABLE product_image (
+TABLE product_image (
     image_id INT PRIMARY KEY AUTO_INCREMENT,
     product_id INT,
     image_url VARCHAR(500),
     FOREIGN KEY (product_id) REFERENCES product(product_id)
 );
 
-CREATE TABLE color (
+TABLE color (
     color_id INT PRIMARY KEY AUTO_INCREMENT,
     color_name VARCHAR(50) NOT NULL,
     hex_code VARCHAR(7)
+);
+
+TABLE size_category (
+    size_category_id INT PRIMARY KEY AUTO_INCREMENT,
+    category_name VARCHAR(100) NOT NULL
+);
+
+TABLE size_option (
+    size_option_id INT PRIMARY KEY AUTO_INCREMENT,
+    size_category_id INT,
+    size_label VARCHAR(50),
+    FOREIGN KEY (size_category_id) REFERENCES size_category(size_category_id)
 );
