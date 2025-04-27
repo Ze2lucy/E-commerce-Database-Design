@@ -30,3 +30,9 @@ CREATE TABLE product_image (
     image_url VARCHAR(500),
     FOREIGN KEY (product_id) REFERENCES product(product_id)
 );
+
+CREATE TABLE color (
+    color_id INT PRIMARY KEY AUTO_INCREMENT,
+    color_name VARCHAR(50) NOT NULL,
+    hex_code VARCHAR(7)
+);
