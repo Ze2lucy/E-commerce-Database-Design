@@ -1,2 +1,4 @@
 -- ecommerce.sql
-
+-- Group members that Participate: [Zethu Sithole]
+-- Group Project: E-commerce Database
+-- Description: Creates schema for e-commerce platform
