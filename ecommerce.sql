@@ -71,3 +71,17 @@ CREATE TABLE attribute_category (
     attribute_category_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL
 );
+TABLE attribute_type (
+    attribute_type_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+TABLE product_attribute (
+    attribute_id INT AUTO_INCREMENT PRIMARY KEY,
+    product_id INT,
+    attribute_type_id INT,
+    attribute_category_id INT,
+    value TEXT,
+    FOREIGN KEY (product_id) REFERENCES product(product_id),
+    FOREIGN KEY (attribute_type_id) REFERENCES attribute_type(attribute_type_id),
+    FOREIGN KEY (attribute_category_id) REFERENCES attribute_category(attribute_category_id)
+);
